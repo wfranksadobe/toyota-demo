@@ -1,14 +1,14 @@
 {
   "mappings": [
     "/:/",
-    "/content/toyota_demo/:/",
-    "/content/toyota_demo/configuration:/.helix/config.json",
-    "/content/toyota_demo/headers:/.helix/headers.json",
-    "/content/toyota_demo/metadata:/metadata.json",
-    "/content/toyota_demo.resource/enrichment/enrichment.json:/enrichment/enrichment.json"
+    "/content/toyota-nz/:/",
+    "/content/toyota-nz/configuration:/.helix/config.json",
+    "/content/toyota-nz/headers:/.helix/headers.json",
+    "/content/toyota-nz/metadata:/metadata.json",
+    "/content/toyota-nz.resource/enrichment/enrichment.json:/enrichment/enrichment.json"
   ],
   "includes": [
-    "/content/toyota_demo/",
+    "/content/toyota-nz/",
     "/content/forms/af/",
     "/content/dam/",
     "/adobe/forms/af/",
