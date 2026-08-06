@@ -1,6 +1,6 @@
 mountpoints:
   /:
-    url: "https://author-p215702-e2235856.adobeaemcloud.com/bin/franklin.delivery/wfranksadobe/toyota-demo/main"
+    url: "https://author-p215702-e2235856.adobeaemcloud.com/bin/franklin.delivery/wfranksadobe/toyota-demo/main" 
     type: "markup"
     suffix: ".html"
 folders:
