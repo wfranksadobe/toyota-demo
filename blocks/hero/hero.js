@@ -1,9 +1,7 @@
-import { readBlockConfig } from '../../scripts/aem.js';
-
 export default function decorate(block) {
   const col = block.firstElementChild;
   const pic = col.querySelector('picture');
-  
+
   // Ensure the picture element is properly positioned for background display
   if (pic) {
     const picWrapper = pic.closest('div');
@@ -17,141 +15,63 @@ export default function decorate(block) {
     }
   }
 
-  // Get the text content div (usually the last div that's not the picture wrapper)
-  const text = col.querySelector('div:not(:has(picture))') || col.querySelector('div:last-child');
-
-  // Process text content and extract button information if present
-  if (text) {
-    const textContent = text.innerHTML;
-    
-    // Look for button markup patterns that might be added through the authoring interface
-    const buttonRegex = /<p>.*?<a[^>]+class[^>]*button[^>]*>(.*?)<\/a>.*?<\/p>/gi;
-    const buttonMatches = [...textContent.matchAll(buttonRegex)];
-    
-    if (buttonMatches.length > 0) {
-      buttonMatches.forEach(match => {
-        const fullMatch = match[0];
-        const buttonText = match[1];
-        
-        // Extract href and class from the link
-        const hrefMatch = fullMatch.match(/href="([^"]+)"/);
-        const classMatch = fullMatch.match(/class="([^"]+)"/);
-        
-        const href = hrefMatch ? hrefMatch[1] : '#';
-        const className = classMatch ? classMatch[1] : 'button primary';
-        
-        // Create new button element
-        const buttonWrapper = document.createElement('div');
-        buttonWrapper.className = 'hero-button-wrapper';
-        
-        const button = document.createElement('a');
-        button.className = className;
-        button.href = href;
-        button.textContent = buttonText;
-        
-        buttonWrapper.appendChild(button);
-        
-        // Remove the original button markup from text
-        text.innerHTML = text.innerHTML.replace(fullMatch, '');
-        
-        // Add the button wrapper after the text
-        text.parentNode.appendChild(buttonWrapper);
-      });
-    }
-    
-    // Check if text is empty after button extraction and hide if so
-    if (text.textContent.trim() === '') {
-      text.style.display = 'none';
-    }
-  }
-
-  // Handle direct button fields from Universal Editor
-  const config = readBlockConfig(block);
-  const buttonData = {
-    text: config.buttonText || config.buttontext || '',
-    link: config.buttonLink || config.buttonlink || '',
-    type: config.buttonType || config.buttontype || 'primary'
-  };
-  
-  // Debug: Log button data to console
-  console.log('Hero button data:', buttonData);
-  console.log('Hero config:', config);
-  
-  if (buttonData.text && buttonData.link) {
-    createHeroButton(block, buttonData);
-  } else {
-    // Look for button data in the content as a fallback
-    const allText = block.textContent;
-    console.log('All text content for button search:', allText);
-    
-    // Look for simple text patterns that might be button data
-    const paragraphs = block.querySelectorAll('p');
-    console.log('Found paragraphs:', paragraphs.length);
-    
-    // Look for button data in the last two paragraphs instead of first two
-    if (paragraphs.length >= 2) {
-      const lastTwo = Array.from(paragraphs).slice(-2);
-      const buttonText = lastTwo[0].textContent.trim();
-      const buttonLink = lastTwo[1].textContent.trim();
-      
-      // Check if these look like button data (not empty, not too long)
-      if (buttonText && buttonLink && buttonText.length < 50 && buttonLink.length < 100) {
-        const extractedButtonData = {
-          text: buttonText,
-          link: buttonLink,
-          type: 'primary'
-        };
-        console.log('Found button data in paragraphs:', extractedButtonData);
-        createHeroButton(block, extractedButtonData);
-        
-        // Hide the paragraphs that contain button data
-        lastTwo[0].style.display = 'none';
-        lastTwo[1].style.display = 'none';
-      }
-    }
-  }
+  createHeroButton(block);
 }
 
 /**
- * Extract button data from data attributes or structured content
- * @param {Element} col - The hero column element
- * @returns {Object} Button data object
- * @deprecated This function is no longer needed as we now use readBlockConfig
+ * Find the buttonText/buttonLink/buttonType fields and turn them into a real
+ * button, then remove the source paragraphs so nothing is left behind to
+ * overlap the title/text overlay.
+ *
+ * These three fields are declared consecutively in blocks/hero/_hero.json, in
+ * this order: buttonText, buttonLink, buttonType. Each is a plain text/select
+ * field (never richtext), so each renders as exactly one paragraph. buttonType
+ * is a two-option enum ("primary" | "secondary"), so it can be located
+ * reliably by its value - buttonLink and buttonText are then simply the two
+ * paragraphs immediately before it, in that order. This holds regardless of
+ * exactly how the fields are nested in the authored markup, and regardless of
+ * how many paragraphs the richtext "text" field itself contains.
+ *
+ * @param {Element} block The hero block element
  */
-function extractButtonData(col) {
-  // Legacy fallback for data attributes
-  return {
-    text: col.dataset.buttonText || '',
-    link: col.dataset.buttonLink || '',
-    type: col.dataset.buttonType || 'primary'
-  };
-}
+function createHeroButton(block) {
+  const paragraphs = [...block.querySelectorAll('p')];
+  const buttonTypeIndex = paragraphs.findIndex((p) => {
+    const value = p.textContent.trim().toLowerCase();
+    return value === 'primary' || value === 'secondary';
+  });
 
-/**
- * Create and append a hero button
- * @param {Element} block - The hero block element
- * @param {Object} buttonData - Button configuration
- */
-function createHeroButton(block, buttonData) {
-  const existingButtonWrapper = block.querySelector('.hero-button-wrapper');
-  if (existingButtonWrapper) {
-    existingButtonWrapper.remove();
-  }
+  // Need at least two paragraphs before the buttonType field (buttonText, buttonLink).
+  if (buttonTypeIndex < 2) return;
+
+  const buttonTypeEl = paragraphs[buttonTypeIndex];
+  const buttonLinkEl = paragraphs[buttonTypeIndex - 1];
+  const buttonTextEl = paragraphs[buttonTypeIndex - 2];
+
+  const buttonType = buttonTypeEl.textContent.trim().toLowerCase();
+  const buttonLink = buttonLinkEl.textContent.trim();
+  const buttonText = buttonTextEl.textContent.trim();
+
+  if (!buttonText || !buttonLink) return;
 
   const buttonWrapper = document.createElement('div');
   buttonWrapper.className = 'hero-button-wrapper';
-  
+
   const button = document.createElement('a');
-  button.className = `button ${buttonData.type}`;
-  button.href = buttonData.link;
-  button.textContent = buttonData.text;
-  
-  // Add click tracking if needed
-  button.addEventListener('click', (e) => {
-    // Add analytics or tracking here if needed
-    console.log(`Hero button clicked: ${buttonData.text} -> ${buttonData.link}`);
-  });
-  
+  button.className = `button ${buttonType}`;
+  button.href = buttonLink;
+  button.textContent = buttonText;
+
   buttonWrapper.appendChild(button);
   block.appendChild(buttonWrapper);
+
+  // Remove the source field cells entirely (not just hide them) so they can't
+  // be counted or positioned by the .hero p / nth-of-type overlay rules.
+  [buttonTextEl, buttonLinkEl, buttonTypeEl].forEach((el) => {
+    const cell = el.parentElement;
+    el.remove();
+    if (cell && cell.children.length === 0 && cell.textContent.trim() === '') {
+      cell.remove();
+    }
+  });
 }
