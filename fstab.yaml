@@ -1,7 +1,6 @@
 mountpoints:
   /:
-    url: "https://author-p154716-e1630108.adobeaemcloud.com/bin/franklin.delivery/wfranksadobe/toyota-nz/main"
-    #url: "https://author-p166557-e1778997.adobeaemcloud.com/bin/franklin.delivery/demo-system-stores/aem-ue-commerce-demo/main"
+    url: "https://author-p215702-e2235856.adobeaemcloud.com/bin/franklin.delivery/wfranksadobe/toyota-demo/main"
     type: "markup"
     suffix: ".html"
 folders:
