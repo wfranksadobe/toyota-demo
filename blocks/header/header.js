@@ -172,10 +172,23 @@ export default async function decorate(block) {
   });
 
   const navBrand = nav.querySelector('.nav-brand');
-  const brandLink = navBrand.querySelector('.button');
+  // Note: an image-only link never gets the 'button' class (decorateButtons skips
+  // anchors that contain an <img>), so look for any <a> here, not just '.button'.
+  let brandLink = navBrand.querySelector('a');
   if (brandLink) {
     brandLink.className = '';
-    brandLink.closest('.button-container').className = '';
+    const buttonContainer = brandLink.closest('.button-container');
+    if (buttonContainer) buttonContainer.className = '';
+  } else {
+    // No link was authored at all (e.g. just a logo image) - wrap the existing
+    // content so the brand is still clickable.
+    brandLink = document.createElement('a');
+    const brandContent = navBrand.querySelector('.default-content-wrapper') || navBrand;
+    while (brandContent.firstChild) brandLink.append(brandContent.firstChild);
+    brandContent.append(brandLink);
+  }
+  if (!brandLink.getAttribute('href')) {
+    brandLink.setAttribute('href', rootLink('/'));
   }
 
   const navSections = nav.querySelector('.nav-sections');
