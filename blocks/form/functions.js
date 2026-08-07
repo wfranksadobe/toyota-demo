@@ -45,8 +45,8 @@ function days(endDate, startDate) {
 /**
  * Calculate approximate monthly loan repayment.
  * @param {number} loanAmount total loan amount
- * @param {number} loanTerm loan term in months
- * @param {number} interestRate annual interest rate, e.g. 6.5 for 6.5%
+ * @param {string} loanTerm loan term in months, e.g. "36"
+ * @param {string} interestRate annual interest rate, e.g. "6.5" for 6.5%
  * @returns {number} approximate monthly repayment
  */
 function calculateMonthlyRepayment(loanAmount, loanTerm, interestRate) {
@@ -54,7 +54,14 @@ function calculateMonthlyRepayment(loanAmount, loanTerm, interestRate) {
   const months = Number(loanTerm);
   const annualRate = Number(interestRate);
 
-  if (principal <= 0 || months <= 0 || annualRate < 0) {
+  if (
+    Number.isNaN(principal)
+    || Number.isNaN(months)
+    || Number.isNaN(annualRate)
+    || principal <= 0
+    || months <= 0
+    || annualRate < 0
+  ) {
     return 0;
   }
 
