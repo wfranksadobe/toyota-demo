@@ -98,11 +98,11 @@ function calculateBalloonPayment(loanAmount, loanTerm) {
   }
 
   const balloonPercentages = {
-    12: 60,
-    24: 50,
-    36: 40,
-    48: 30,
-    60: 20,
+    12: 20,
+    24: 15,
+    36: 10,
+    48: 7.5,
+    60: 5,
   };
 
   const balloonPercentage = balloonPercentages[months];
