@@ -25,7 +25,7 @@ export const emailPattern = '([A-Za-z0-9][._]?)+[A-Za-z0-9]@[A-Za-z0-9]+(\.?[A-Z
 
 //let submitBaseUrl = '';
 //export const submitBaseUrl = 'http://localhost:3000';
-export const submitBaseUrl = 'https://author-p215702-e2235856.adobeaemcloud.com';
+export const submitBaseUrl = 'https://publish-p215702-e2235856.adobeaemcloud.com';
 
 export const SUBMISSION_SERVICE = 'https://forms.adobe.com/adobe/forms/af/submit/';
 
