@@ -42,5 +42,34 @@ function days(endDate, startDate) {
   return Math.floor(diffInMs / (1000 * 60 * 60 * 24));
 }
 
+/**
+ * Calculate approximate monthly loan repayment.
+ * @param {number} loanAmount total loan amount
+ * @param {number} loanTerm loan term in months
+ * @param {number} interestRate annual interest rate, e.g. 6.5 for 6.5%
+ * @returns {number} approximate monthly repayment
+ */
+function calculateMonthlyRepayment(loanAmount, loanTerm, interestRate) {
+  const principal = Number(loanAmount);
+  const months = Number(loanTerm);
+  const annualRate = Number(interestRate);
+
+  if (principal <= 0 || months <= 0 || annualRate < 0) {
+    return 0;
+  }
+
+  // Handle 0% interest separately
+  if (annualRate === 0) {
+    return principal / months;
+  }
+
+  const monthlyRate = annualRate / 100 / 12;
+
+  return (
+    (principal * monthlyRate)
+    / (1 - ((1 + monthlyRate) ** -months))
+  );
+}
+
 // eslint-disable-next-line import/prefer-default-export
-export { getFullName, days, submitFormArrayToString };
+export { getFullName, days, submitFormArrayToString, calculateMonthlyRepayment };
