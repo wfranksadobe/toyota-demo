@@ -78,5 +78,42 @@ function calculateMonthlyRepayment(loanAmount, loanTerm, interestRate) {
   );
 }
 
+/**
+ * Calculate estimated balloon payment based on loan term.
+ * @param {number|string} loanAmount total loan amount
+ * @param {string} loanTerm loan term in months, e.g. "36"
+ * @returns {number} estimated balloon payment
+ */
+function calculateBalloonPayment(loanAmount, loanTerm) {
+  const principal = Number(loanAmount);
+  const months = Number(loanTerm);
+
+  if (
+    Number.isNaN(principal)
+    || Number.isNaN(months)
+    || principal <= 0
+    || months <= 0
+  ) {
+    return 0;
+  }
+
+  const balloonPercentages = {
+    12: 60,
+    24: 50,
+    36: 40,
+    48: 30,
+    60: 20,
+  };
+
+  const balloonPercentage = balloonPercentages[months];
+
+  if (balloonPercentage === undefined) {
+    return 0;
+  }
+
+  return principal * (balloonPercentage / 100);
+}
+
+
 // eslint-disable-next-line import/prefer-default-export
-export { getFullName, days, submitFormArrayToString, calculateMonthlyRepayment };
+export { getFullName, days, submitFormArrayToString, calculateMonthlyRepayment, calculateBalloonPayment };
