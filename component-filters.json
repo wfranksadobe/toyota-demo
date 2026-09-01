@@ -24,6 +24,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "product-teaser",
       "product-configurator",
       "product-recommendations"
@@ -42,6 +48,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "product-teaser",
       "product-configurator",
       "product-recommendations"
@@ -60,6 +72,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "enrichment",
       "product-teaser",
       "product-configurator",
@@ -80,6 +98,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "enrichment",
       "product-details",
       "product-teaser",
@@ -100,6 +124,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-mini-cart"
     ]
   },
@@ -116,6 +146,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-cart",
       "product-teaser",
       "product-configurator",
@@ -135,6 +171,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-order-header",
       "commerce-order-status",
       "commerce-shipping-status",
@@ -161,6 +203,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-checkout"
     ]
   },
@@ -177,6 +225,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-search-order"
     ]
   },
@@ -193,6 +247,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "product-list-page"
     ]
   },
@@ -209,6 +269,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-login"
     ]
   },
@@ -225,6 +291,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-forgot-password"
     ]
   },
@@ -241,6 +313,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-create-account"
     ]
   },
@@ -257,6 +335,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-account-sidebar",
       "commerce-account-header",
       "commerce-orders-list",
@@ -278,6 +362,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-account-sidebar",
       "commerce-orders-list"
     ]
@@ -295,6 +385,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-account-sidebar",
       "commerce-addresses"
     ]
@@ -312,6 +408,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-account-sidebar",
       "commerce-returns-list"
     ]
@@ -329,6 +431,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-account-sidebar",
       "commerce-order-header",
       "commerce-order-status",
@@ -352,6 +460,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-search-order"
     ]
   },
@@ -368,6 +482,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-return-header",
       "commerce-order-status",
       "commerce-shipping-status",
@@ -388,6 +508,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-create-return"
     ]
   },
@@ -404,6 +530,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-confirm-account"
     ]
   },
@@ -420,6 +552,12 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-create-password"
     ]
   },
@@ -436,13 +574,31 @@
       "fragment",
       "form",
       "embed-adaptive-form",
+      "accordion",
+      "carousel",
+      "embed",
+      "table",
+      "tabs",
+      "video",
       "commerce-wishlist"
+    ]
+  },
+  {
+    "id": "accordion",
+    "components": [
+      "accordion-item"
     ]
   },
   {
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "carousel",
+    "components": [
+      "carousel-slide"
     ]
   },
   {
@@ -488,6 +644,12 @@
       "tnc",
       "wizard",
       "range"
+    ]
+  },
+  {
+    "id": "tabs",
+    "components": [
+      "tab"
     ]
   }
 ]

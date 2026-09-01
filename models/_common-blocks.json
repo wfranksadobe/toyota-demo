@@ -8,7 +8,13 @@
   "columns",
   "fragment",
   "form",
-  "embed-adaptive-form"
+  "embed-adaptive-form",
+  "accordion",
+  "carousel",
+  "embed",
+  "table",
+  "tabs",
+  "video"
 ]
 
     

@@ -51,6 +51,24 @@
         },
         {
           "...": "../blocks/embed-adaptive-form/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/accordion/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/carousel/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/embed/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/table/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/tabs/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/video/_*.json#/definitions"
         }
       ]
     },
